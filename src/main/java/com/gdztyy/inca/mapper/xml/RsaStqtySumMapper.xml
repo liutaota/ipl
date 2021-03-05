@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdztyy.inca.mapper.RsaStqtySumMapper">
+    <select id="selectList" resultType="com.gdztyy.api.vo.RsaStqtySumVo">
+    select a.app_medicine_code, a.stock from goods3 a where a.app_medicine_code=#{app_medicine_code}
+    </select>
+    <select id="selectListBy" resultType="com.gdztyy.api.vo.RsaStqtySumVo">
+        select a.app_medicine_code, a.stock from goods3 a
+    </select>
+</mapper>

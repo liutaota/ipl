@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdztyy.inca.mapper.UserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gdztyy.inca.entity.UserInfo">
+        <result column="ID" property="id" />
+        <result column="USER_NAME" property="userName" />
+        <result column="NAME" property="name" />
+        <result column="PASSWORD" property="password" />
+        <result column="CUSTOM_ID" property="customId" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="IS_DEL" property="isDel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, USER_NAME, NAME, PASSWORD, CUSTOM_ID, CREATE_TIME, IS_DEL
+    </sql>
+
+</mapper>

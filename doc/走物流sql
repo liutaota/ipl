@@ -1,0 +1,100 @@
+declare
+ id number := 789786;
+begin
+insert into m_wms_sa_rs
+      (sourceid,
+       sourceerpid,
+       scredate,
+       cmdtype,
+       scustomerid,
+       sinputmanid,
+       inputman,
+       ssalerid,
+       saler,
+       sauditmanid,
+       auditman,
+       sinputdeptid,
+       inputdept,
+       stransportsiteid,
+       transportsitename,
+       memo,
+       giftflag,
+       billflag,
+       dtlcount,
+       sourcedtlid,
+       sstorageid,
+       sgoodsid,
+       sgoodspackid,
+       slotid,
+       lotno,
+       sposid,
+       posno,
+       goodsqty,
+       unitprice,
+       money,
+       taxrate,
+       taxmonry,
+       nottaxunitprice,
+       nottaxmoney,
+       giftprice,
+       giftmoney,
+       realioqty, --应出库数量
+       checkdiffqty, --短检数量，0 为没短检
+       scheckmanid, --第一复核员id
+       checkman, --复核员名称
+       scheckman2id, --第一复核员id
+       checkman2, --第二复核员名称
+       sownerid,  --货主
+       zxdoccol1,  --整件箱号
+       zxdoccol3) --散件算号
+ select
+       sourceid,
+       sourceerpid,
+       scredate,
+       cmdtype,
+       scustomerid,
+       sinputmanid,
+       inputman,
+       ssalerid,
+       saler,
+       sauditmanid,
+       auditman,
+       sinputdeptid,
+       inputdept,
+       stransportsiteid,
+       transportsitename,
+       memo,
+       giftflag,
+       billflag,
+       dtlcount,
+       sourcedtlid,
+       sstorageid,
+       sgoodsid,
+       sgoodspackid,
+       slotid,
+       lotno,
+       sposid,
+       posno,
+       goodsqty,
+       unitprice,
+       money,
+       taxrate,
+       taxmonry,
+       nottaxunitprice,
+       nottaxmoney,
+       giftprice,
+       giftmoney,
+       goodsqty realioqty, --应出库数量
+       0 checkdiffqty, --短检数量，0 为没短检
+       --goodsqty checkdiffqty, --整单短检
+       3 scheckmanid, --第一复核员id
+       '系统复核员' checkman, --复核员名称
+       0 scheckman2id, --第一复核员id
+       '系统管理员' checkman2, --第二复核员名称
+       1001 sownerid,  --货主
+       'ZJ*0001' zxdoccol1,  --整件箱号
+       'SJ*0001' zxdoccol3 --散件算号
+  from  m_wms_sa where not  exists (select  1 from m_wms_sa_rs e where e.sourceid=m_wms_sa.sourceid)
+                 and m_wms_sa.sourceid in (id);
+  delete from m_wms_sa c where c.sourceid in (select e.sourceid from m_wms_sa_rs e where e.sourceid in (id));
+end;

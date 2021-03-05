@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdztyy.inca.mapper.B2bOrderListMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gdztyy.inca.entity.B2bOrderList">
+        <result column="ID" property="id" />
+        <result column="B2B_ORDER_NO" property="b2bOrderNo" />
+        <result column="B2B_ORDER_TYPE" property="b2bOrderType" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="B2B_ORDER_ID" property="b2bOrderId" />
+        <result column="VERSION" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, B2B_ORDER_NO, B2B_ORDER_TYPE, CREATE_DATE, B2B_ORDER_ID, VERSION
+    </sql>
+
+    <update id="add1HintCount">
+        update B2B_ORDER_LIST set HINT_COUNT = HINT_COUNT + 1  ${ew.customSqlSegment}
+    </update>
+
+</mapper>
